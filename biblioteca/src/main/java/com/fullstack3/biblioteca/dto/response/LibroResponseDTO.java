@@ -1,4 +1,4 @@
-package com.fullstack3.biblioteca.dto;
+package com.fullstack3.biblioteca.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
