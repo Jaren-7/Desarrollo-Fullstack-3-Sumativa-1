@@ -41,8 +41,30 @@ public class LibroService implements ILibroService {
 
     @Override 
     public LibroResponseDTO crearLibro(LibroRequestDTO.Create request) {
-        var libro = _mapper.toEntity(request);
+        var libro = _mapper.toEntityCreate(request);
         var result = _repo.create(libro);
         return obtenerLibroPorId(result);
+    }
+
+    @Override 
+    public String actualizarLibro(LibroRequestDTO.Update request) {
+
+        var libro = _mapper.toEntityUpdate(request);
+
+        if (_repo.getById(libro.getIdlibro()) == null) {
+            throw new ResourceNotFoundException("Libro no encontrado con ID: " + libro.getIdlibro());
+        }
+
+        _repo.update(libro);
+
+        return "Libro actualizado con éxito";
+    }
+
+    @Override
+    public void eliminarLibro(int id) {
+        if (_repo.getById(id) == null) {
+            throw new ResourceNotFoundException("Libro no encontrado con ID: " + id);
+        }
+        _repo.delete(id);
     }
 }

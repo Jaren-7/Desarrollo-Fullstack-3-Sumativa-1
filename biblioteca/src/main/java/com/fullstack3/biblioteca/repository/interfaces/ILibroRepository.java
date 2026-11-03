@@ -10,4 +10,8 @@ public interface ILibroRepository {
     LibroModel getById(int id);
 
     int create(LibroModel libro);
+
+    int update(LibroModel libro);
+
+    void delete(int id);
 }

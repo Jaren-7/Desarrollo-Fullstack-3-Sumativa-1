@@ -12,4 +12,7 @@ public interface ILibroService {
 
     LibroResponseDTO crearLibro(LibroRequestDTO.Create request);
 
+    String actualizarLibro(LibroRequestDTO.Update request);
+
+    void eliminarLibro(int id);
 }

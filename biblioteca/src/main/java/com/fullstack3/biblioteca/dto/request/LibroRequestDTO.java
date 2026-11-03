@@ -25,4 +25,22 @@ public class LibroRequestDTO {
         @NotBlank(message = "El género no puede estar vacío")
         private String genero;
     }
+
+    @Data
+    @NoArgsConstructor 
+    @AllArgsConstructor 
+    @Builder  
+    public static class Update {
+        @NotNull(message = "Para actualizar un libro debe indicar obligatoriamente un ID")
+        private int idlibro;
+        @NotBlank(message = "El título no puede estar vacío")
+        private String titulo;
+        @NotBlank(message = "El autor no puede estar vacío")
+        private String autor;
+        @NotNull(message = "La fecha de publicación no puede estar vacía")
+        private Integer publicacion;
+        @NotBlank(message = "El género no puede estar vacío")
+        private String genero;
+
+    }
 }

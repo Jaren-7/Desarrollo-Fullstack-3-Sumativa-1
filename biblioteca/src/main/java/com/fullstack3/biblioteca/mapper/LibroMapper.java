@@ -16,7 +16,8 @@ public interface LibroMapper {
     // @Mapping(target = "autor", ignore = true)
     // @Mapping(target = "publicacion", ignore = true)
     // @Mapping(target = "genero", ignore = true)
-    LibroModel toEntity(LibroRequestDTO.Create request);
+    LibroModel toEntityCreate(LibroRequestDTO.Create request);
+    LibroModel toEntityUpdate(LibroRequestDTO.Update request);
 
     List<LibroResponseDTO> toResponseList(List<LibroModel> libros);
 

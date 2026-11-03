@@ -71,4 +71,36 @@ public class LibroRepository implements ILibroRepository {
         );
     }
 
+    @Override 
+    public int update(LibroModel libro) {
+        return  _jdbi.withHandle(handle ->
+            handle.createUpdate("""
+                UPDATE libros
+                SET titulo = :titulo,
+                    autor = :autor,
+                    publicacion = :publicacion,
+                    genero = :genero
+                WHERE idlibro = :idlibro
+            """)
+            .bind("titulo", libro.getTitulo())
+            .bind("autor", libro.getAutor())
+            .bind("publicacion", libro.getPublicacion())
+            .bind("genero", libro.getGenero())
+            .bind("idlibro", libro.getIdlibro())
+            .execute()
+        );
+    } 
+
+    @Override 
+    public void delete(int id) {
+        _jdbi.withHandle(handle ->
+            handle.createUpdate("""
+                DELETE FROM libros
+                WHERE idlibro = :id
+            """)
+            .bind("id", id)
+            .execute()
+        );
+    }
+
 }
